@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leave Requests</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/static.css">
+    <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" /> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+</head>
+<body>
+    <div class="ui pointing fixed menu">
+            <div class="ui container">
+                <a href="" class="item">
+                    <img src="images/logo-header.png" alt="MASHAF" width="120px">
+                </a>
+                <div class="item">
+                    <a class="item borderless">
+                        <i class="bell icon"></i> Notification
+                        <div class="ui red circular label">22</div>
+                    </a>
+                </div>
+                <div class="ui dropdown pointing item right top attached">
+                    <!-- <div class="item"> -->
+                        <img src="images/akun.png" width="40px" height="40px"alt="">
+                        <div class="menu left">
+                            <div class="item text-right">
+                                <h3 class="m-0 p-0" id="staff_name">Staff Name</h3>
+                                <span class="m-0 p-0" id="staff_id">12345</span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="item" onclick="logout()">
+                                <i class="power off icon"></i>
+                                Logout
+                            </div>
+                        </div>
+                    <!-- </div>      -->
+                </div>
+            </div>
+    </div>
+
+    <div class="ui centered grid padded">
+        <div class="twelve wide column my-5 pt-4" style="background-color:#fff;">
+            <div class="ui top attached tabular menu">
+                <a class="item active" data-tab="request"><i class="plus icon"></i> Request</a>
+                <a class="item" data-tab="history"><i class="history icon"></i> History</a>
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="request">
+                <div class="ui centered grid padded">
+                    <div class="sixteen wide column mt-3">
+                        <h3 class="ui top attached block inverted teal table header">Employee Information</h3>
+                        <div class="ui attached segment">
+                            <div class="content">
+                                <div class="ui equal width form">
+                                    <form class="ui form" id="data-employee">
+                                        <div class="fields">
+                                            <div class="field wide twelve">
+                                                <label>Name</label>
+                                                <input type="text" id="staffname" disabled>
+                                            </div>
+                                            <div class="field wide four">
+                                                <label>Staff ID</label>
+                                                <input type="text" id="staffid" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <label>Supervisor</label>
+                                                <input type="text" id="supervisorid" disabled>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <label>Email</label>
+                                                <input type="text" id="emailstaff" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <label>Location</label>
+                                                <input type="text" id="locationuser" disabled>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <label>Join Date</label>
+                                                <input type="text" id="joineddate" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <h3 class="ui top attached block inverted teal table header">Leave Detail</h3>
+                        <div class="ui attached segment">
+                            <div class="content">
+                                <div class="ui equal width form">
+                                    <form class="ui form">
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Leave Type</label>
+                                                <input type="hidden" id="typeLeave">
+                                                <select class="ui dropdown" id="leave-type">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide six">
+                                                <label>Start Date</label>
+                                                <div class="ui calendar" id="sdate">
+                                                    <div class="ui input left icon">
+                                                        <i class="calendar icon"></i>
+                                                        <input type="text" placeholder="Start Date" id="stdate">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field wide six">
+                                                <label>End Date</label>
+                                                <div class="ui calendar" id="edate">
+                                                    <div class="ui input left icon">
+                                                        <i class="calendar icon"></i>
+                                                        <input type="text" placeholder="End Date" id="endate" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field wide four">
+                                                <label>Number of Leave Days</label>
+                                                <input type="text" disabled id="number-days">
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Remarks</label>
+                                                <textarea id="remarks" placeholder="Write remarks here..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Submission Date</label>
+                                                <input type="text" id="submission_date" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <div class="ui buttons">
+                            <button class="ui red button">
+                                <i class="reply icon"></i>
+                                Cancel
+                            </button>
+                            <div class="or"></div>
+                            <button class="ui teal button" id="submitRequest">
+                                <i class="edit icon"></i>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui bottom attached tab segment" data-tab="history">
+                <table class="ui celled striped table">
+                    <thead>
+                        <tr class="ui teal inverted table">
+                            <th>No</th>
+                            <th>Balance</th>
+                            <th>Leave Type</th>
+                            <th>Date</th>
+                            <th>Remarks</th>
+                            <th>Submission Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>5 day</td>
+                            <td>Annual Leave</td>
+                            <td>05/10/2018 - 10/10/2018</td>
+                            <td>Please approve my Annual Leave</td>
+                            <td>10/10/2018</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>5 day</td>
+                            <td>Annual Leave</td>
+                            <td>05/10/2018 - 10/10/2018</td>
+                            <td>Please approve my Annual Leave</td>
+                            <td>10/10/2018</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>5 day</td>
+                            <td>Annual Leave</td>
+                            <td>05/10/2018 - 10/10/2018</td>
+                            <td>Please approve my Annual Leave</td>
+                            <td>10/10/2018</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>5 day</td>
+                            <td>Annual Leave</td>
+                            <td>05/10/2018 - 10/10/2018</td>
+                            <td>Please approve my Annual Leave</td>
+                            <td>10/10/2018</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>5 day</td>
+                            <td>Annual Leave</td>
+                            <td>05/10/2018 - 10/10/2018</td>
+                            <td>Please approve my Annual Leave</td>
+                            <td>10/10/2018</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="box-loading" id="loading">
+        <img src="images/loading1.gif" width="100px" height="100px">
+    </div>
+
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        
+    let staffID = localStorage.getItem('sid')
+
+    $('.tabular.menu .item').tab();
+    $('select.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
+
+    $('#sdate').calendar({
+        type: 'date',
+        formatter: {
+            date: function (date, settings) {
+            if (!date) return '';
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            return year + '/' + month + '/' + day;
+            }
+        },
+        onChange: function(date, text){
+            typeLeaves = $('#typeLeave').val();
+
+            if (typeLeaves == '' || typeLeaves == null){
+                alert('Please select Leave Type!')
+            } else  if (typeLeaves == 'Important'){
+                let d = parseInt($('#number-days').val())
+                let dateNew = new Date(text)
+                
+                dateNew.setDate(dateNew.getDate() + d);
+                
+                var nextDay = dateNew.getDate();
+                var nextMonth = dateNew.getMonth() + 1;
+                var nextYear = dateNew.getFullYear();
+
+                enddate = nextYear+'/'+nextMonth+'/'+nextDay;
+
+                $('#endate').val(enddate)
+            }
+        }
+    });
+    $('#edate').calendar({
+        type: 'date',
+        startCalendar: $('#sdate'),
+        formatter: {
+            date: function (date, settings) {
+            if (!date) return '';
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            return year + '/' + month + '/' + day;
+            }
+        },
+        onChange: function(date, text){
+            var firstDate = $('#stdate').val()
+            var secondDate = text
+            $('#number-days').val(calcBusinessDays(firstDate,secondDate))
+        }
+    });
+
+    getTasklistSupervisor();
+    getDataEmplayee(staffID)
+    getDataProfile(staffID)
+    </script>
+</body>
+</html>

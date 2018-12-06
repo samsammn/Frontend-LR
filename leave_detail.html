@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leave Requests</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
+</head>
+<body>
+    <div class="ui pointing fixed menu">
+            <div class="ui container">
+                <a href="supervisor.html" class="item">
+                    <img src="images/logo-header.png" alt="MASHAF" width="120px">
+                </a>
+                <div class="item">
+                    <a class="ui pointing labeled icon dropdown item borderless">
+                        <i class="bell icon"></i> Notification
+                        <div class="ui red circular label" id="countNotif">0</div>
+                        <div class="menu" id="notifs">
+                            <!-- <div class="header">Leave Requests</div> -->
+                        </div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="recapitulation.html" class="item borderless">
+                        <i class="clipboard list icon"></i>
+                        Rekapitulasi
+                    </a>
+                </div>
+                <div class="ui dropdown pointing item right top attached">
+                    <!-- <div class="item"> -->
+                        <img src="images/akun.png" width="40px" height="40px"alt="">
+                        <div class="menu left">
+                            <div class="item text-right">
+                                <h3 class="m-0 p-0" id="staff_name">Staff Name</h3>
+                                <span class="m-0 p-0" id="staff_id">12345</span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="item" onclick="logout()">
+                                <i class="power off icon"></i>
+                                Logout
+                            </div>
+                        </div>
+                    <!-- </div>      -->
+                </div>
+            </div>
+    </div>
+
+    <div class="ui centered grid padded">
+        <div class="twelve wide column my-5" style="background-color:#fff;">
+            <!-- <div class="ui"> -->
+                <h3 class="ui dividing teal header text-center my-2 pb-4">Form Detail Request Leave</h3>
+                <div class="ui centered grid padded">
+                    <div class="sixteen wide column mt-1">
+                        <h3 class="ui top attached block inverted teal table header">Employee Information</h3>
+                        <div class="ui attached segment">
+                            <div class="content">
+                                <div class="ui equal width form">
+                                    <form class="ui form" id="data-employee">
+                                        <div class="fields">
+                                            <div class="field wide twelve">
+                                                <label>Name</label>
+                                                <input type="text" id="staffname" disabled>
+                                            </div>
+                                            <div class="field wide four">
+                                                <label>Staff ID</label>
+                                                <input type="text" id="staffid" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <label>Supervisor</label>
+                                                <input type="text" id="supervisorid" disabled>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <label>Email</label>
+                                                <input type="text" id="emailstaff" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <label>Location</label>
+                                                <input type="text" id="locationuser" disabled>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <label>Join Date</label>
+                                                <input type="text" id="joineddate" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <h3 class="ui top attached block inverted teal table header">Leave Detail</h3>
+                        <div class="ui attached segment">
+                            <div class="content">
+                                <div class="ui equal width form">
+                                    <form class="ui form">
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <div class="ui calendar" id="sdate">
+                                                    <div class="ui input left icon">
+                                                        <i class="calendar icon"></i>
+                                                        <input type="text" placeholder="Start Date" id="startdate" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <div class="ui calendar" id="edate">
+                                                    <div class="ui input left icon">
+                                                        <i class="calendar icon"></i>
+                                                        <input type="text" placeholder="End Date" id="enddate" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide eight">
+                                                <label>Leave Type</label>
+                                                <input type="text"  id="leavename" disabled>
+                                            </div>
+                                            <div class="field wide eight">
+                                                <label>Number of Leave Days</label>
+                                                <input type="text" id="numberdays" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Remarks</label>
+                                                <textarea id="remarksstaff" placeholder="Write remarks here..." disabled></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Submission Date</label>
+                                                <input type="text" id="submissiondate" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <h3 class="ui top attached block inverted teal table header">Leave Approval</h3>
+                        <div class="ui attached segment">
+                            <div class="content">
+                                <div class="ui equal width form">
+                                    <form class="ui form">
+                                        <div class="fields">
+                                            <div class="field sixteen eight">
+                                                <label>Action</label>
+                                                <select class="ui dropdown" id="leave_action">
+                                                    <option>Approve</option>
+                                                    <option>Reject</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Remarks</label>
+                                                <textarea id="remarks_approval" placeholder="Write remarks here..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="fields">
+                                            <div class="field wide sixteen">
+                                                <label>Approval Date</label>
+                                                <input type="text" id="approval_date" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>        
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sixteen wide column">
+                        <div class="ui buttons">
+                            <button class="ui red button">
+                                <i class="reply icon"></i>
+                                Cancel
+                            </button>
+                            <div class="or"></div>
+                            <button class="ui teal button" id="submitApproval">
+                                <i class="edit icon"></i>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+
+        </div>
+    </div>
+
+    <div class="box-loading" id="loading" style="display:none">
+        <img src="images/loading1.gif" width="100px" height="100px">
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+
+    let staffID = localStorage.getItem('sid')
+    let lid = document.location.href.split("=")[1].split("&")[0];
+
+    $('.tabular.menu .item').tab();
+    $('select.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
+
+    getTasklistSupervisor();
+    getDataProfile(staffID)
+    getLeaveDetail(lid)
+    </script>
+</body>
+</html>

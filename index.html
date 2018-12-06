@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Leave Requests</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+<body class="body-login">
+    <div class="wrapp-login">
+        <!-- <img src="../images/akun.png"> -->
+        <img src="../images/logoheader.png" alt="Mashaf">
+
+            <div class="form-group mt-2">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Staff ID" class="form-input pl-5" id="sid">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Password" class="form-input pl-5" id="pass">
+            </div>
+            <!-- <div class="form-group">
+                <a href="">Forgot Password?</a>
+            </div>
+     -->
+            <input type="button" value="Login" class="btn btn-second mt-4" id="login">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script>
+    $(document).ready(function(){
+        $("#login").click(function(){
+            let sid = $("#sid").val()
+            let pwd = $("#pass").val()
+
+            let dataSignin = {
+                sid: sid,
+                pwd: pwd
+            }
+
+            $.ajax({
+                url: 'http://localhost:5000/signIn',
+                type:'POST',
+                method: 'POST',
+                data: JSON.stringify(dataSignin),
+                contentType: 'application/json',
+                complete:function(msg){
+                    console.log(msg)
+                    if (msg.responseText != "Failed"){
+
+                        localStorage.setItem('sid', sid)
+                        data = (msg.responseJSON[0])
+
+                        $.each(data, function(){
+                            if (data['stafflevel'] == "Staff"){
+                                window.location = "home.html"
+                            } else if (data['stafflevel'] == "Supervisor"){
+                                window.location = "supervisor.html"
+                            }
+                        })
+        
+                        // window.location = 'home.html'
+                    } else {
+                        alert('Gagal Login')
+                    }
+                }
+            })
+        });
+    });
+    </script>
+</body>
+</html>
